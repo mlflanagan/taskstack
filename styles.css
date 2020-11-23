@@ -1,0 +1,19 @@
+#wrapper {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 25em;
+    margin-top: 5em;
+}
+
+textarea {
+    width: 25em;
+    margin-top: 5em;
+    resize: none;
+}
+
+button {
+    margin-top: 1em;
+}
+
