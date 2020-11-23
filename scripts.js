@@ -7,11 +7,8 @@ function main() {
         stackText = document.getElementById("stackText"),
         popButton = document.getElementById("popButton");
 
-    function formatStack(jsonData) {
-        // format items on the stack for display
-        // TODO: Is there a better way to do this? 
-        var formattedEntries = JSON.stringify(jsonData.reverse());
-        formattedEntries = formattedEntries.replace(/[\[\]\"]/gi, '');
+    function formatStack(stackData) {
+        var formattedEntries = JSON.stringify(stackData.reverse()).replace(/[\[\]\"]/gi, '');
         return formattedEntries.split(",").join("\n");
     }
 
@@ -24,7 +21,6 @@ function main() {
             return;
         }
 
-        // update local storage
         entries = JSON.parse(localStorage.entries);
         if (entries.includes(entry)) {
             alert("That task is already on the stack");
@@ -33,7 +29,6 @@ function main() {
         entries.push(entry);
         localStorage.entries = JSON.stringify(entries);
 
-        // update stack display and clear the task entry field
         stackText.innerHTML = formatStack(entries);
         textToPush.value = "";
     };
@@ -53,7 +48,6 @@ function main() {
         poppedText = entries.pop();
         localStorage.entries = JSON.stringify(entries);
 
-        // update task entry field with the popped task, update stack display
         textToPush.value = poppedText;
         stackText.innerHTML = formatStack(entries);
     };
@@ -61,12 +55,10 @@ function main() {
     // for debugging only
     // localStorage.entries = JSON.stringify([]);
 
-    // initialize local storage
     if (!localStorage.hasOwnProperty('entries')) {
         localStorage.entries = JSON.stringify([]);
     }
 
-    // initialize the stack display with existing tasks
+    // initialize the stack display with existing tasks, if any
     stackText.innerHTML = formatStack(JSON.parse(localStorage.entries));
 }
-
