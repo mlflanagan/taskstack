@@ -1,4 +1,4 @@
-/*global alert, document, localStorage */
+/*global window, document, localStorage */
 function main() {
     'use strict';
 
@@ -23,7 +23,7 @@ function main() {
 
         entries = JSON.parse(localStorage.entries);
         if (entries.includes(entry)) {
-            alert("That task is already on the stack");
+            window.alert("That task is already on the stack");
             return;
         }
         entries.push(entry);
@@ -40,7 +40,7 @@ function main() {
         entries = JSON.parse(localStorage.entries);
         if (entries.length === 0) {
             // stackText.innerHTML = "Empty stack";
-            alert("The stack is empty");
+            window.alert("The stack is empty");
             return;
         }
 

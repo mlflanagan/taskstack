@@ -1,4 +1,4 @@
-#wrapper {
+div#wrapper {
     text-align: center;
 }
 
@@ -10,6 +10,7 @@ textarea {
 
 textarea {
     resize: none;
+    height: 5em;
 }
 
 button {
